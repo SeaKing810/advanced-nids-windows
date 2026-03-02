@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Advanced NIDS Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <h2>Advanced NIDS Dashboard</h2>
+
+    <div class="card" style="max-width: 920px; margin-bottom: 14px;">
+      <h3>Login</h3>
+      <div class="row">
+        <input id="username" placeholder="username" value="admin" />
+        <input id="password" placeholder="password" type="password" />
+        <button onclick="login()">Sign in</button>
+        <div id="loginStatus"></div>
+      </div>
+      <p style="margin-top: 10px;">Dashboard updates every 5 seconds after login.</p>
+    </div>
+
+    <div class="container">
+      <div class="card">
+        <h3>Filters</h3>
+        <div class="row">
+          <select id="severity">
+            <option value="">any severity</option>
+            <option value="critical">critical</option>
+            <option value="high">high</option>
+            <option value="medium">medium</option>
+            <option value="info">info</option>
+          </select>
+
+          <select id="label">
+            <option value="">any label</option>
+            <option value="anomaly">anomaly</option>
+            <option value="normal">normal</option>
+          </select>
+
+          <input id="src_ip" placeholder="src ip" />
+          <input id="dst_ip" placeholder="dst ip" />
+
+          <select id="minutes">
+            <option value="60">last 60 minutes</option>
+            <option value="120" selected>last 120 minutes</option>
+            <option value="360">last 6 hours</option>
+            <option value="1440">last 24 hours</option>
+          </select>
+
+          <button onclick="refreshAll()">Apply</button>
+        </div>
+
+        <h3 style="margin-top: 14px;">Anomalies per minute</h3>
+        <canvas id="chart1"></canvas>
+
+        <h3 style="margin-top: 14px;">Top sources</h3>
+        <div id="topSources"></div>
+
+        <h3 style="margin-top: 14px;">Top targeted ports</h3>
+        <div id="topPorts"></div>
+      </div>
+
+      <div class="card">
+        <h3>Detections</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Severity</th>
+              <th>Label</th>
+              <th>Src</th>
+              <th>Dst</th>
+              <th>Proto</th>
+              <th>Score</th>
+              <th>Correlation</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>Selected event</h3>
+        <div id="detailHint">Click a row.</div>
+        <pre id="detail" style="display:none;"></pre>
+      </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
