@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+
+.env
+data/
+models/
+pcaps/
+
+.pytest_cache/
+coverage.xml
