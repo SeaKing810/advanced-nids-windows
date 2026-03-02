@@ -1,0 +1,68 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 18px;
+}
+
+.container {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 12px;
+  flex: 1;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+input, select, button {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+button {
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  font-size: 13px;
+}
+
+th {
+  text-align: left;
+}
+
+.pill {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+}
+
+.pill.critical { background: #ffe1e1; border-color: #ffb3b3; }
+.pill.high { background: #ffe9e9; border-color: #ffb3b3; }
+.pill.medium { background: #fff1d6; border-color: #ffd28a; }
+.pill.info { background: #eef6ff; border-color: #b3d1ff; }
+
+pre {
+  background: #f7f7f7;
+  padding: 10px;
+  border-radius: 10px;
+  overflow: auto;
+  max-height: 520px;
+}
